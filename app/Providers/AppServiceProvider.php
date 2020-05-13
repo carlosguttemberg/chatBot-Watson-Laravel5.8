@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Watson\Assistant;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        app()->singleton(Assistant::class, function ($app){
+            return new Assistant(config('watson.username'), config('watson.password'), config('watson.workspace'));
+        });
     }
 }

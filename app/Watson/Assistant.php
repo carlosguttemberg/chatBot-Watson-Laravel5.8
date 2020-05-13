@@ -20,9 +20,11 @@ class Assistant
 
 
     public function dialog(string $message){
+        
         $client = new Client;
+        //https://api.us-south.assistant.watson.cloud.ibm.com/v2/assistants/fad21566-55b5-4f71-8c1b-b51949881b90/sessions?version=2020-04-01
+        $url = 'https://api.us-south.assistant.watson.cloud.ibm.com/v2/assistants/' . $this->workspace . '/message?version=2020-04-01';
 
-        $url = 'http://gateway.watsonplatform.net/assistant/api/v1/workspaces/' . $this->workspace . '/message?version=2018-09-20';
         $response = $client->request('POST', $url, [
             'json' => [
                 'input' => [

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Watson\Assistant;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,21 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/teste', function(){
+    return 'teste';
+});
+
+Route::post('/dialog', function(){
+    $message = request()->input('message');
+
+    $assistant = app()->make(Assistant::class);
+
+    $response = $assistant->dialog($message);
+
+    $response = json_decode($response, true);
+
+    // print_r($response);
+
+    return $response['output']['generic'];
+} );
