@@ -15,6 +15,9 @@
                     @endif
 
                     You are logged in!
+
+                    <watson-chat>
+                    </watson-chat>
                 </div>
             </div>
         </div>

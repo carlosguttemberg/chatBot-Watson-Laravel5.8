@@ -32,6 +32,13 @@ Route::post('/dialog', function(){
     $response = json_decode($response, true);
 
     // print_r($response);
+    $mensagens = [];
+    foreach ($response['output']['generic'] as $arrayResposta) {
+        // foreach ($arrayResposta as $resposta) {
+            $mensagens[] = $arrayResposta['text'];
+        // }
+        
+    }
 
-    return $response['output']['generic'];
+    return $mensagens;
 } );
